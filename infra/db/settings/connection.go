@@ -1,8 +1,8 @@
-package repository
+package settings
 
 import (
 	"crud-golang/configuration"
-	"crud-golang/domain/entities"
+	"crud-golang/infra/db/entities"
 	"fmt"
 
 	"gorm.io/driver/mysql"
