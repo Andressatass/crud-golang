@@ -35,7 +35,7 @@ func (us UserAddresService) FindUsersAddres() ([]entities.UserAddres, error) {
 	return usersAddres, nil
 }
 
-func (us UserAddresService) UpdateUser(userAddres domain.UserAddres) error {
+func (us UserAddresService) UpdateUserAddres(userAddres domain.UserAddres) error {
 	userAddresEntity := userAddres.ParseToEntity()
 
 	err := us.UserAddresRepository.Update(userAddresEntity)
@@ -46,7 +46,7 @@ func (us UserAddresService) UpdateUser(userAddres domain.UserAddres) error {
 	return nil
 }
 
-func (us UserAddresService) DeleteUser(userAddres domain.UserAddres) error {
+func (us UserAddresService) DeleteUserAddres(userAddres domain.UserAddres) error {
 	userAddresEntity := userAddres.ParseToEntity()
 
 	err := us.UserAddresRepository.Delete(userAddresEntity)

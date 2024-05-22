@@ -9,11 +9,11 @@ import (
 	"net/http"
 )
 
-func HandleNewUser(
+func HandleNewUserAddres(
 	w http.ResponseWriter,
 	r *http.Request,
-	userService service.UserService) {
-	var userModel viewmodel.UserModel
+	userAddresService service.UserAddresService) {
+	var userAddresModel viewmodel.UserAddresModel
 	var errors []error
 
 	bytes, err := io.ReadAll(r.Body)
@@ -23,23 +23,23 @@ func HandleNewUser(
 		return
 	}
 
-	err = json.Unmarshal([]byte(bytes), &userModel)
+	err = json.Unmarshal([]byte(bytes), &userAddresModel)
 	if err != nil {
 		WriteErrorResponse(w, err, http.StatusOK)
 
 		return
 	}
 
-	errors = userModel.Validate()
+	errors = userAddresModel.Validate()
 	if len(errors) != 0 {
 		WriteErrorResponse(w, errors[0], http.StatusBadRequest)
 
 		return
 	}
 
-	domainUser := userModel.Parse()
+	domainUserAddres := userAddresModel.Parse()
 
-	id, err := userService.NewUser(domainUser)
+	id, err := userAddresService.NewUserAddres(domainUserAddres)
 	if err != nil {
 		WriteErrorResponse(w, err, http.StatusOK)
 
@@ -57,19 +57,18 @@ func HandleNewUser(
 	w.Write(byte)
 }
 
-// talvez editar o modelo que é devolvido, para n ir com data de criação etc.
-func HandleFindUsers(
+func HandleFindUserAddres(
 	w http.ResponseWriter,
 	r *http.Request,
-	userService service.UserService) {
-	users, err := userService.FindUsers()
+	userAddresService service.UserAddresService) {
+	usersAddres, err := userAddresService.FindUsersAddres()
 	if err != nil {
 		WriteErrorResponse(w, err, http.StatusOK)
 
 		return
 	}
 
-	byte, err := json.Marshal(users)
+	byte, err := json.Marshal(usersAddres)
 	if err != nil {
 		fmt.Fprintf(w, "Erro ao codificar o erro: %v", err)
 
@@ -81,11 +80,11 @@ func HandleFindUsers(
 	w.Write(byte)
 }
 
-func HandleUpdateUser(
+func HandleUpdateUserAddres(
 	w http.ResponseWriter,
 	r *http.Request,
-	userService service.UserService) {
-	var userModel viewmodel.UserModel
+	userAddresService service.UserAddresService) {
+	var userAddresModel viewmodel.UserAddresModel
 	var errors []error
 
 	bytes, err := io.ReadAll(r.Body)
@@ -95,23 +94,23 @@ func HandleUpdateUser(
 		return
 	}
 
-	err = json.Unmarshal([]byte(bytes), &userModel)
+	err = json.Unmarshal([]byte(bytes), &userAddresModel)
 	if err != nil {
 		WriteErrorResponse(w, err, http.StatusOK)
 
 		return
 	}
 
-	errors = userModel.Validate()
+	errors = userAddresModel.Validate()
 	if len(errors) != 0 {
 		WriteErrorResponse(w, errors[0], http.StatusBadRequest)
 
 		return
 	}
 
-	domainUser := userModel.Parse()
+	domainUserAddres := userAddresModel.Parse()
 
-	err = userService.UpdateUser(domainUser)
+	err = userAddresService.UpdateUserAddres(domainUserAddres)
 	if err != nil {
 		WriteErrorResponse(w, err, http.StatusOK)
 
@@ -122,11 +121,11 @@ func HandleUpdateUser(
 	w.WriteHeader(http.StatusOK)
 }
 
-func HandleDeleteUser(
+func HandleDeleteUserAddres(
 	w http.ResponseWriter,
 	r *http.Request,
-	userService service.UserService) {
-	var userModel viewmodel.UserModel
+	userAddresService service.UserAddresService) {
+	var userAddresModel viewmodel.UserAddresModel
 
 	bytes, err := io.ReadAll(r.Body)
 	if err != nil {
@@ -135,16 +134,16 @@ func HandleDeleteUser(
 		return
 	}
 
-	err = json.Unmarshal([]byte(bytes), &userModel)
+	err = json.Unmarshal([]byte(bytes), &userAddresModel)
 	if err != nil {
 		WriteErrorResponse(w, err, http.StatusOK)
 
 		return
 	}
 
-	domainUser := userModel.Parse()
+	domainUserAddres := userAddresModel.Parse()
 
-	err = userService.DeleteUser(domainUser)
+	err = userAddresService.DeleteUserAddres(domainUserAddres)
 	if err != nil {
 		WriteErrorResponse(w, err, http.StatusOK)
 

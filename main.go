@@ -21,16 +21,20 @@ func main() {
 	}
 
 	userRepository := repositories.NewUserRepository(conn.DB)
+	userAddresRepository := repositories.NewUserAdressRepository(conn.DB)
 
 	userService := service.UserService{
 		UserRepository: userRepository,
 	}
+	userAddresService := service.UserAddresService{
+		UserAddresRepository: userAddresRepository,
+	}
 
-	routes.Register(userService)
+	routes.RegisterUserRoutes(userService)
+	routes.RegisterUserAddresRoutes(userAddresService)
 
 	err = server.StartServer(":8080")
 	if err != nil {
 		return
 	}
-
 }
