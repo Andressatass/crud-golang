@@ -6,17 +6,17 @@ import (
 	"gorm.io/gorm"
 )
 
-type userRepository struct {
+type UserRepository struct {
 	db *gorm.DB
 }
 
-func NewUserRepository(db *gorm.DB) userRepository {
-	return userRepository{
+func NewUserRepository(db *gorm.DB) UserRepository {
+	return UserRepository{
 		db: db,
 	}
 }
 
-func (r userRepository) Create(user entities.User) (uint, error) {
+func (r UserRepository) Create(user entities.User) (uint, error) {
 	result := r.db.Create(&user)
 	if result.Error != nil {
 		return 0, result.Error
@@ -25,7 +25,7 @@ func (r userRepository) Create(user entities.User) (uint, error) {
 	return user.ID, nil
 }
 
-func (r userRepository) FindAllUsers() ([]entities.User, error) {
+func (r UserRepository) FindAllUsers() ([]entities.User, error) {
 	var users []entities.User
 
 	result := r.db.Find(&users)
@@ -36,7 +36,7 @@ func (r userRepository) FindAllUsers() ([]entities.User, error) {
 	return users, nil
 }
 
-func (r userRepository) Update(user entities.User) error {
+func (r UserRepository) Update(user entities.User) error {
 	result := r.db.Save(user)
 	if result.Error != nil {
 		return result.Error
@@ -45,7 +45,7 @@ func (r userRepository) Update(user entities.User) error {
 	return nil
 }
 
-func (r userRepository) Delete(user entities.User) error {
+func (r UserRepository) Delete(user entities.User) error {
 	result := r.db.Delete(&user)
 	if result.Error != nil {
 		return result.Error
