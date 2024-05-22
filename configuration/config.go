@@ -9,7 +9,7 @@ import (
 )
 
 type Configuration struct {
-	Database Database
+	Database Database `env:"CRUDGOLANG_DATABASE"`
 }
 
 type Database struct {
@@ -20,7 +20,9 @@ type Database struct {
 	Name     string `env:"CRUDGOLANG_DATABASE_NAME"`
 }
 
-func GetConfig(config Configuration) error {
+func GetConfig() (Configuration, error) {
+	var config Configuration
+
 	e := enviper.New(viper.New())
 
 	e.SetEnvPrefix(app.EnvPrefix)
@@ -29,8 +31,8 @@ func GetConfig(config Configuration) error {
 
 	err := e.Unmarshal(&config)
 	if err != nil {
-		return fmt.Errorf("could not unmarshal config into the struct: %s", err)
+		return config, fmt.Errorf("could not unmarshal config into the struct: %s", err)
 	}
 
-	return nil
+	return config, nil
 }

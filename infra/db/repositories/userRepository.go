@@ -1,4 +1,4 @@
-package repository
+package repositories
 
 import (
 	"crud-golang/infra/db/entities"
@@ -25,8 +25,15 @@ func (r userRepository) Create(user entities.User) (uint, error) {
 	return user.ID, nil
 }
 
-func (r userRepository) Read() {
+func (r userRepository) FindAllUsers() ([]entities.User, error) {
+	var users []entities.User
 
+	result := r.db.Find(&users)
+	if result.Error != nil {
+		return nil, result.Error
+	}
+
+	return users, nil
 }
 
 func (r userRepository) Update(user entities.User) error {

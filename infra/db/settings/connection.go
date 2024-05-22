@@ -9,12 +9,12 @@ import (
 	"gorm.io/gorm"
 )
 
-type conn struct {
-	db *gorm.DB
+type Conn struct {
+	DB *gorm.DB
 }
 
 func Connect(
-	dbConfig configuration.Database) (*conn, error) {
+	dbConfig configuration.Database) (*Conn, error) {
 
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8mb4&parseTime=True&loc=Local",
 		dbConfig.User, dbConfig.Password, dbConfig.Host, dbConfig.Port, dbConfig.Name,
@@ -25,10 +25,10 @@ func Connect(
 		return nil, err
 	}
 
-	conn := new(conn)
-	conn.db = db
+	conn := new(Conn)
+	conn.DB = db
 
-	conn.db.AutoMigrate(
+	conn.DB.AutoMigrate(
 		&entities.User{},
 		&entities.UserAddres{},
 	)
