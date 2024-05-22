@@ -2,8 +2,8 @@ package main
 
 import (
 	"crud-golang/configuration"
-	"crud-golang/infra/db/repositories"
-	"crud-golang/infra/db/settings"
+	"crud-golang/db/repositories"
+	"crud-golang/db/settings"
 	"crud-golang/server"
 	"crud-golang/server/routes"
 	"crud-golang/service"
@@ -33,7 +33,7 @@ func main() {
 	routes.RegisterUserRoutes(userService)
 	routes.RegisterUserAddresRoutes(userAddresService)
 
-	err = server.StartServer(":8080")
+	err = server.StartServer(config.API.Port)
 	if err != nil {
 		return
 	}

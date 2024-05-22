@@ -1,6 +1,6 @@
 package domain
 
-import "crud-golang/infra/db/entities"
+import "crud-golang/db/entities"
 
 //UserAddres holds the user addres information
 type UserAddres struct {
@@ -8,6 +8,7 @@ type UserAddres struct {
 	Street string
 	City   string
 	State  string
+	//User  User
 }
 
 func (ua UserAddres) ParseToEntity() entities.UserAddres {

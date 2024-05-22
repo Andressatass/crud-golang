@@ -10,6 +10,7 @@ import (
 
 type Configuration struct {
 	Database Database `env:"CRUDGOLANG_DATABASE"`
+	API      API      `env:"CRUDGOLANG_API"`
 }
 
 type Database struct {
@@ -18,6 +19,10 @@ type Database struct {
 	User     string `env:"CRUDGOLANG_DATABASE_USER"`
 	Password string `env:"CRUDGOLANG_DATABASE_PASSWORD"`
 	Name     string `env:"CRUDGOLANG_DATABASE_NAME"`
+}
+
+type API struct {
+	Port string `env:"CRUDGOLANG_API_PORT"`
 }
 
 func GetConfig() (Configuration, error) {

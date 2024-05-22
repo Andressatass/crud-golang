@@ -1,9 +1,9 @@
 package service
 
 import (
+	"crud-golang/db/entities"
+	"crud-golang/db/repositories"
 	"crud-golang/domain"
-	"crud-golang/infra/db/entities"
-	"crud-golang/infra/db/repositories"
 	"fmt"
 )
 

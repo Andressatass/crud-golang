@@ -2,7 +2,7 @@ package settings
 
 import (
 	"crud-golang/configuration"
-	"crud-golang/infra/db/entities"
+	"crud-golang/db/entities"
 	"fmt"
 
 	"gorm.io/driver/mysql"

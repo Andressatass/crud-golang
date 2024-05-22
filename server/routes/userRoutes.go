@@ -20,5 +20,4 @@ func RegisterUserRoutes(userService service.UserService) {
 	http.HandleFunc("/DeleteUser", func(w http.ResponseWriter, r *http.Request) {
 		handler.HandleDeleteUser(w, r, userService)
 	})
-
 }

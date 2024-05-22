@@ -1,12 +1,13 @@
 package domain
 
-import "crud-golang/infra/db/entities"
+import "crud-golang/db/entities"
 
 //User holds the user information
 type User struct {
 	Id   string
 	Name string
 	Age  int
+	//Addres UserAddres
 }
 
 func (u User) ParseToEntity() entities.User {

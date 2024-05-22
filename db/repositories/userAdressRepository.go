@@ -1,7 +1,7 @@
 package repositories
 
 import (
-	"crud-golang/infra/db/entities"
+	"crud-golang/db/entities"
 
 	"gorm.io/gorm"
 )
