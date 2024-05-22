@@ -1,7 +1,7 @@
 package routes
 
 import (
-	httpHandler "crud-golang/server/handler"
+	"crud-golang/server/handler"
 	"crud-golang/service"
 	"net/http"
 )
@@ -9,7 +9,9 @@ import (
 func Register(userService service.UserService) {
 
 	http.HandleFunc("/NewUser", func(w http.ResponseWriter, r *http.Request) {
-		httpHandler.HandleNewUser(w, r, userService)
+		handler.HandleNewUser(w, r, userService)
 	})
-
+	http.HandleFunc("/FindAllUsers", func(w http.ResponseWriter, r *http.Request) {
+		handler.HandleFindUsers(w, r, userService)
+	})
 }

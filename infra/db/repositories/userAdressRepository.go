@@ -6,17 +6,17 @@ import (
 	"gorm.io/gorm"
 )
 
-type userAdressRepository struct {
+type UserAdressRepository struct {
 	db *gorm.DB
 }
 
-func NewUserAdressRepository(db *gorm.DB) userAdressRepository {
-	return userAdressRepository{
+func NewUserAdressRepository(db *gorm.DB) UserAdressRepository {
+	return UserAdressRepository{
 		db: db,
 	}
 }
 
-func (r userAdressRepository) Create(userAdress entities.UserAddres) (uint, error) {
+func (r UserAdressRepository) Create(userAdress entities.UserAddres) (uint, error) {
 	result := r.db.Create(&userAdress)
 	if result.Error != nil {
 		return 0, result.Error
@@ -25,7 +25,7 @@ func (r userAdressRepository) Create(userAdress entities.UserAddres) (uint, erro
 	return userAdress.ID, nil
 }
 
-func (r userAdressRepository) FindAllUsers() ([]entities.UserAddres, error) {
+func (r UserAdressRepository) FindAllUsers() ([]entities.UserAddres, error) {
 	var usersAdress []entities.UserAddres
 
 	result := r.db.Find(&usersAdress)
@@ -36,7 +36,7 @@ func (r userAdressRepository) FindAllUsers() ([]entities.UserAddres, error) {
 	return usersAdress, nil
 }
 
-func (r userAdressRepository) Update(userAddres entities.UserAddres) error {
+func (r UserAdressRepository) Update(userAddres entities.UserAddres) error {
 	result := r.db.Save(userAddres)
 	if result.Error != nil {
 		return result.Error
@@ -45,7 +45,7 @@ func (r userAdressRepository) Update(userAddres entities.UserAddres) error {
 	return nil
 }
 
-func (r userAdressRepository) Delete(userAddres entities.UserAddres) error {
+func (r UserAdressRepository) Delete(userAddres entities.UserAddres) error {
 	result := r.db.Delete(&userAddres)
 	if result.Error != nil {
 		return result.Error
