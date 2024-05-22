@@ -2,6 +2,7 @@ package service
 
 import (
 	"crud-golang/domain"
+	"crud-golang/infra/db/entities"
 	"crud-golang/infra/db/repositories"
 	"fmt"
 )
@@ -21,6 +22,37 @@ func (us UserService) NewUser(user domain.User) (uint, error) {
 	return uui, nil
 }
 
-func (us UserService) DeleteUser() {
+func (us UserService) FindUsers() ([]entities.User, error) {
+	var users []entities.User
 
+	users, err := us.UserRepository.FindAllUsers()
+	if err != nil {
+		return users, fmt.Errorf("could not find users: %w", err)
+	}
+
+	//add logica de transformar em json aqui
+
+	return users, nil
+}
+
+func (us UserService) UpdateUser(user domain.User) error {
+	userEntity := user.ParseToEntity()
+
+	err := us.UserRepository.Update(userEntity)
+	if err != nil {
+		return fmt.Errorf("could not update user: %w", err)
+	}
+
+	return nil
+}
+
+func (us UserService) DeleteUser(user domain.User) error {
+	userEntity := user.ParseToEntity()
+
+	err := us.UserRepository.Delete(userEntity)
+	if err != nil {
+		return fmt.Errorf("could not delete user:%w", err)
+	}
+
+	return nil
 }
