@@ -2,12 +2,14 @@ package httpHandler
 
 import (
 	"crud-golang/server/viewmodel"
+	"crud-golang/service"
 	"encoding/json"
+	"fmt"
 	"io"
 	"net/http"
 )
 
-func HandleNewuser(w http.ResponseWriter, r *http.Request) {
+func HandleNewUser(w http.ResponseWriter, r *http.Request, userService service.UserService) {
 	var userModel viewmodel.UserModel
 	var errors []error
 
@@ -25,5 +27,14 @@ func HandleNewuser(w http.ResponseWriter, r *http.Request) {
 	if len(errors) != 0 {
 		return
 	}
+
+	domainUser := userModel.Parse()
+
+	id, err := userService.NewUser(domainUser)
+	if err != nil {
+		return
+	}
+
+	fmt.Print(id)
 
 }
