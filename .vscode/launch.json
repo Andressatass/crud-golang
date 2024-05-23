@@ -14,7 +14,7 @@
                 "CRUDGOLANG_DATABASE_PASSWORD": "admin",
                 "CRUDGOLANG_DATABASE_NAME": "crud_golang",
                 "CRUDGOLANG_API_PORT": ":8080"
-            },       
+            },
         },
 
     ]
