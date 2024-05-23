@@ -37,7 +37,7 @@ func (r UserRepository) FindAllUsers() ([]entities.User, error) {
 }
 
 func (r UserRepository) Update(user entities.User) error {
-	result := r.db.Save(user)
+	result := r.db.Model(&user).Updates(user)
 	if result.Error != nil {
 		return result.Error
 	}

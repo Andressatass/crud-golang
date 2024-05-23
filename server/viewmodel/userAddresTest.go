@@ -18,7 +18,6 @@ func TestUserAddresValidate(t *testing.T) {
 		{
 			name: "ShouldSucessfullyValidateAll",
 			userAddresModel: UserAddresModel{
-				Id:     "123",
 				Street: "street_mock",
 				City:   "city_mock",
 				State:  "state_mock",
@@ -28,7 +27,6 @@ func TestUserAddresValidate(t *testing.T) {
 		{
 			name: "ShouldReturnErrorWhenFielsStreetIsEmpty",
 			userAddresModel: UserAddresModel{
-				Id:     "123",
 				Street: "",
 				City:   "city_mock",
 				State:  "state_mock",
@@ -40,7 +38,6 @@ func TestUserAddresValidate(t *testing.T) {
 		{
 			name: "ShouldReturnErrorWhenFielsCityIsEmpty",
 			userAddresModel: UserAddresModel{
-				Id:     "123",
 				Street: "street_mock",
 				City:   "",
 				State:  "state_mock",
@@ -52,7 +49,6 @@ func TestUserAddresValidate(t *testing.T) {
 		{
 			name: "ShouldReturnErrorWhenFielsStateIsEmpty",
 			userAddresModel: UserAddresModel{
-				Id:     "123",
 				Street: "street_mock",
 				City:   "city_mock",
 				State:  "",
@@ -64,7 +60,6 @@ func TestUserAddresValidate(t *testing.T) {
 		{
 			name: "ShouldReturnAllErrors",
 			userAddresModel: UserAddresModel{
-				Id:     "123",
 				Street: "",
 				City:   "",
 				State:  "",

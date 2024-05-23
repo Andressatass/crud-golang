@@ -30,8 +30,6 @@ func (us UserService) FindUsers() ([]entities.User, error) {
 		return users, fmt.Errorf("could not find users: %w", err)
 	}
 
-	//add logica de transformar em json aqui
-
 	return users, nil
 }
 

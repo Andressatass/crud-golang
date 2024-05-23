@@ -18,7 +18,6 @@ func TestUserValidate(t *testing.T) {
 		{
 			name: "ShouldSucessfullyValidateAll",
 			userModel: UserModel{
-				Id:   "123",
 				Name: "Andressa",
 				Age:  25,
 			},
@@ -27,7 +26,6 @@ func TestUserValidate(t *testing.T) {
 		{
 			name: "ShouldReturnErrorWhenFieldAgeIsNegative",
 			userModel: UserModel{
-				Id:   "123",
 				Name: "Andressa",
 				Age:  -1,
 			},
@@ -38,7 +36,6 @@ func TestUserValidate(t *testing.T) {
 		{
 			name: "ShouldReturnErrorWhenFielsNameIsEmpty",
 			userModel: UserModel{
-				Id:   "123",
 				Name: "",
 				Age:  25,
 			},
@@ -49,7 +46,6 @@ func TestUserValidate(t *testing.T) {
 		{
 			name: "ShouldReturnAllErrors",
 			userModel: UserModel{
-				Id:   "123",
 				Name: "",
 				Age:  -1,
 			},

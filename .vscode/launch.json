@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "CrudGolang",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${workspaceFolder}/main.go",
+            "env": {
+                "CRUDGOLANG_DATABASE_PORT": "3306",
+                "CRUDGOLANG_DATABASE_HOST": "localhost",
+                "CRUDGOLANG_DATABASE_USER": "root",
+                "CRUDGOLANG_DATABASE_PASSWORD": "admin",
+                "CRUDGOLANG_DATABASE_NAME": "crud_golang",
+                "CRUDGOLANG_API_PORT": ":8080"
+            },       
+        },
+
+    ]
+}

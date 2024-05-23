@@ -6,7 +6,6 @@ import (
 )
 
 type UserAddresModel struct {
-	Id     string `json:"user_uuid"`
 	Street string `json:"street"`
 	City   string `json:"city"`
 	State  string `json:"state"`
@@ -37,7 +36,6 @@ func (ua UserAddresModel) Validate() []error {
 
 func (ua UserAddresModel) Parse() domain.UserAddres {
 	return domain.UserAddres{
-		Id:     ua.Id,
 		Street: ua.Street,
 		City:   ua.City,
 		State:  ua.State,
