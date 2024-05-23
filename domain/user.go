@@ -4,15 +4,14 @@ import "crud-golang/db/entities"
 
 //User holds the user information
 type User struct {
-	//Id   string
+	UUID string
 	Name string
 	Age  int
-	//Addres UserAddres
 }
 
 func (u User) ParseToEntity() entities.User {
 	return entities.User{
-		//Id:   u.Id,
+		UUID: u.UUID,
 		Name: u.Name,
 		Age:  u.Age,
 	}

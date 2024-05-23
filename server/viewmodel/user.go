@@ -6,6 +6,7 @@ import (
 )
 
 type UserModel struct {
+	UUID string `json:"uuid"`
 	Name string `json:"name"`
 	Age  int    `json:"age"`
 }
@@ -31,6 +32,7 @@ func (u UserModel) Validate() []error {
 
 func (u UserModel) Parse() domain.User {
 	return domain.User{
+		UUID: u.UUID,
 		Name: u.Name,
 		Age:  u.Age,
 	}

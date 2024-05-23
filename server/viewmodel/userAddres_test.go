@@ -22,7 +22,6 @@ func TestUserAddresValidate(t *testing.T) {
 				City:   "city_mock",
 				State:  "state_mock",
 			},
-			expectedErrors: []error{},
 		},
 		{
 			name: "ShouldReturnErrorWhenFielsStreetIsEmpty",

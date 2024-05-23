@@ -21,7 +21,6 @@ func TestUserValidate(t *testing.T) {
 				Name: "Andressa",
 				Age:  25,
 			},
-			expectedErrors: []error{},
 		},
 		{
 			name: "ShouldReturnErrorWhenFieldAgeIsNegative",

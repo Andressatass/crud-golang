@@ -5,6 +5,8 @@ import (
 	"crud-golang/db/repositories"
 	"crud-golang/domain"
 	"fmt"
+
+	uuid "github.com/satori/go.uuid"
 )
 
 type UserService struct {
@@ -13,6 +15,8 @@ type UserService struct {
 
 func (us UserService) NewUser(user domain.User) (uint, error) {
 	userEntity := user.ParseToEntity()
+
+	userEntity.UUID = uuid.NewV4().String()
 
 	uui, err := us.UserRepository.Create(userEntity)
 	if err != nil {
